@@ -11,11 +11,29 @@ export default function App() {
   useEffect(() => {
     // Set the random bingo table for the user
     setUserTable(
-      shuffleArray(bingoData).map((row) =>
-        shuffleArray(row).map((cell) => ({ ...cell, id: uuidv4() }))
+      shuffleArray(bingoData).map((row, indexRow) =>
+        shuffleArray(row).map((cell, indexCell) => {
+          // Set always on the center cell
+          if (indexRow === 2 && indexCell === 2) {
+            return { ...cell, id: uuidv4(), on: true };
+          }
+          return { ...cell, id: uuidv4() };
+        })
       )
     );
   }, []);
+
+  const handleClickCell = ({ target }) => {
+    target.style.backgroundColor = 'green';
+    // Update 'on' property of target cell
+    setUserTable((prevState) =>
+      prevState.map((row) =>
+        row.map((cell) =>
+          cell.id === target.dataset.id ? { ...cell, on: true } : { ...cell }
+        )
+      )
+    );
+  };
 
   return (
     <div>
@@ -24,7 +42,11 @@ export default function App() {
           {userTable.map((row, index) => (
             <tr key={index}>
               {row.map((cell) => (
-                <BingoCell key={cell.id} {...cell} />
+                <BingoCell
+                  key={cell.id}
+                  {...cell}
+                  onClickCell={handleClickCell}
+                />
               ))}
             </tr>
           ))}
