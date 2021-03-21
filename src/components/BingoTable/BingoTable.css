@@ -1,0 +1,24 @@
+.bingo-table-box {
+  border-radius: 10px;
+  border: 1px solid var(--primary-color);
+  padding: 0.3rem;
+  background-color: var(--primary-color);
+}
+
+.bingo-table {
+  margin-bottom: 0;
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .bingo-table-box {
+    padding: 0.4rem;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .bingo-table-box {
+    padding: 0.6rem;
+  }
+}

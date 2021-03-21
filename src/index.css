@@ -1,8 +1,9 @@
 :root {
-  --primary-color: #327373;
-  --secondary-color: #013440;
+  --primary-color: #013440;
+  --secondary-color: #327373;
   --cell-off-color: #f2d0a7;
   --cell-on-color: #bf9d7e;
+  --light-color: #ffffff;
 }
 
 body {
@@ -10,4 +11,20 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100vh;
+  font-size: 13px;
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  body {
+    font-size: 18px;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  body {
+    font-size: 20px;
+  }
 }

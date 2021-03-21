@@ -3,8 +3,10 @@ import Table from 'react-bootstrap/Table';
 
 export default function BingoTable({ children }) {
   return (
-    <Table size="lg" bordered={true}>
-      <tbody>{children}</tbody>
-    </Table>
+    <div className="bingo-table-box shadow">
+      <Table bordered responsive className="bingo-table">
+        <tbody>{children}</tbody>
+      </Table>
+    </div>
   );
 }

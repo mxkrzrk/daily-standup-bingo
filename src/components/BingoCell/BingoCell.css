@@ -1,0 +1,38 @@
+.bingo-cell {
+  border: 1px solid var(--cell-on-color);
+  background-color: var(--cell-off-color);
+  text-align: center;
+  text-transform: capitalize;
+  padding: 0 !important;
+  border: 1px solid var(--cell-on-color) !important;
+  vertical-align: middle !important;
+  height: 4rem;
+  width: 4rem;
+}
+
+.bingo-cell-on {
+  background-color: var(--cell-on-color);
+  border: 1px solid var(--cell-off-color) !important;
+}
+
+.bingo-cell-won {
+  background-color: var(--secondary-color);
+  border: 1px solid var(--primary-color) !important;
+  color: var(--light-color);
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .bingo-cell {
+    height: 5rem;
+    width: 5rem;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .bingo-cell {
+    height: 6rem;
+    width: 6rem;
+  }
+}

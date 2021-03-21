@@ -1,0 +1,17 @@
+.bingo-header {
+  background-color: var(--primary-color);
+  width: 100%;
+  padding: 1.5rem 0;
+}
+
+.bingo-header-icon {
+  color: var(--secondary-color);
+  font-size: 2rem;
+  margin-right: 1rem;
+}
+
+.bingo-header-title {
+  margin-bottom: 0;
+  font-size: 2rem;
+  color: var(--light-color);
+}

@@ -3,8 +3,13 @@ import { bingoData } from './data/bingoData';
 import shuffleArray from './utils/shuffleArray';
 import checkVictory from './utils/checkVictory';
 import { v4 as uuidv4 } from 'uuid';
+import './App.css';
 import BingoTable from './components/BingoTable/BingoTable';
 import BingoCell from './components/BingoCell/BingoCell';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Header from './components/Header/Header';
+import Col from 'react-bootstrap/Col';
 
 export default function App() {
   const [userTable, setUserTable] = useState();
@@ -14,9 +19,14 @@ export default function App() {
     setUserTable(
       shuffleArray(bingoData).map((row, indexRow) =>
         shuffleArray(row).map((cell, indexCell) => {
-          // Set always on the center cell
+          // Set always on for the center cell
           if (indexRow === 2 && indexCell === 2) {
-            return { ...cell, id: uuidv4(), on: true };
+            return {
+              ...cell,
+              id: uuidv4(),
+              on: true,
+              name: 'Standup Bingo 🚀',
+            };
           }
           return { ...cell, id: uuidv4() };
         })
@@ -26,13 +36,17 @@ export default function App() {
 
   // Check the user victory
   useEffect(() => {
-    if (userTable) return checkVictory(userTable) ? console.log('win') : null;
+    if (userTable) {
+      const victoryData = checkVictory(userTable);
+      if (victoryData.win) {
+        setUserTable(victoryData.winTable);
+      }
+    }
   }, [userTable]);
 
   const handleClickCell = ({ target }) => {
-    if (target.dataset.on === 'false') {
-      target.style.backgroundColor = 'green';
-      // Update 'on' property of target cell
+    // Update 'on' property of target cell
+    if (target.dataset.on === 'false' && target.dataset.won === 'false') {
       setUserTable((prevState) =>
         prevState.map((row) =>
           row.map((cell) =>
@@ -44,22 +58,38 @@ export default function App() {
   };
 
   return (
-    <div>
-      {userTable && (
-        <BingoTable>
-          {userTable.map((row, index) => (
-            <tr key={index}>
-              {row.map((cell) => (
-                <BingoCell
-                  key={cell.id}
-                  {...cell}
-                  onClickCell={handleClickCell}
-                />
+    <Container fluid>
+      <Row>
+        <Header />
+      </Row>
+      <Row>
+        <Col
+          as="main"
+          xs={12}
+          md={{ offset: 1, span: 10 }}
+          lg={{ offset: 2, span: 8 }}
+          className="bingo-main"
+        >
+          {userTable && (
+            <BingoTable>
+              {userTable.map((row, index) => (
+                <tr
+                  key={index}
+                  className="align-items-center justify-content-center"
+                >
+                  {row.map((cell) => (
+                    <BingoCell
+                      key={cell.id}
+                      {...cell}
+                      onClickCell={handleClickCell}
+                    />
+                  ))}
+                </tr>
               ))}
-            </tr>
-          ))}
-        </BingoTable>
-      )}
-    </div>
+            </BingoTable>
+          )}
+        </Col>
+      </Row>
+    </Container>
   );
 }
