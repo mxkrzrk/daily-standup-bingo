@@ -1,0 +1,13 @@
+:root {
+  --primary-color: #327373;
+  --secondary-color: #013440;
+  --cell-off-color: #f2d0a7;
+  --cell-on-color: #bf9d7e;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Ranchers', cursive, 'Roboto',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
