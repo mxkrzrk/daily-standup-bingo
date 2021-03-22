@@ -76,8 +76,8 @@ export default function App() {
       <Row>
         <Header />
       </Row>
+      {won && <BingoWon onClickWon={handleClickWon} />}
       <Row>
-        {won && <BingoWon onClickWon={handleClickWon} />}
         <Col
           as="main"
           xs={12}
