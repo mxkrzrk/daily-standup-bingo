@@ -1,6 +1,6 @@
-const rowWon = [];
-const colWon = [];
-const diagonalWon = [];
+let rowWon = [];
+let colWon = [];
+let diagonalWon = [];
 
 const checkWinRow = (winTable) => {
   // Check row victory
@@ -92,7 +92,13 @@ const checkLeftDiagonal = (winTable) => {
   }
 };
 
-export default function checkVictory(bingoTable) {
+export function resetWinTable() {
+  rowWon = [];
+  colWon = [];
+  diagonalWon = [];
+}
+
+export function checkVictory(bingoTable) {
   // Create win table
   const winTable = bingoTable.slice();
   // Check victory type

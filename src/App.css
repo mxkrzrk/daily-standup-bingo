@@ -1,12 +1,14 @@
 .bingo-main {
   margin-top: 5rem;
   position: relative;
+  height: 100%;
 }
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
   .bingo-main {
     margin-top: 3rem;
+    margin-bottom: 5rem;
   }
 }
 

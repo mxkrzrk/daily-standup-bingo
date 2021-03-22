@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { bingoData } from './data/bingoData';
 import shuffleArray from './utils/shuffleArray';
-import checkVictory from './utils/checkVictory';
+import { checkVictory, resetWinTable } from './utils/checkVictory';
 import { v4 as uuidv4 } from 'uuid';
 import './App.css';
 import BingoTable from './components/BingoTable/BingoTable';
@@ -11,10 +11,12 @@ import Row from 'react-bootstrap/Row';
 import Header from './components/Header/Header';
 import Col from 'react-bootstrap/Col';
 import BingoWon from './components/BingoWon/BingoWon';
+import ResetButton from './components/ResetButton/ResetButton';
 
 export default function App() {
   const [userTable, setUserTable] = useState();
   const [won, setWon] = useState(false);
+  const [reset, setReset] = useState(false);
 
   // Set the random bingo table for the user
   useEffect(() => {
@@ -34,7 +36,7 @@ export default function App() {
         })
       )
     );
-  }, []);
+  }, [reset]);
 
   // Check the user victory
   useEffect(() => {
@@ -62,6 +64,11 @@ export default function App() {
 
   const handleClickWon = () => {
     setWon(false);
+  };
+
+  const handleClickResetButton = () => {
+    setReset((prevState) => !prevState);
+    resetWinTable();
   };
 
   return (
@@ -97,6 +104,7 @@ export default function App() {
             </BingoTable>
           )}
         </Col>
+        <ResetButton onClickResetButton={handleClickResetButton} />
       </Row>
     </Container>
   );

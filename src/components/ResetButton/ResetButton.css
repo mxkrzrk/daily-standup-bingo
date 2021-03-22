@@ -1,0 +1,40 @@
+.bingo-button {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  padding: 1.5rem;
+  background-color: var(--red-color);
+  border: 1px solid var(--red-color);
+  border-radius: 0;
+  border-top-left-radius: 10px;
+  font-size: 0.8rem;
+  transition: background-color 0.3s ease-in-out, border 0.3s ease-in-out;
+}
+
+.bingo-button:active,
+.bingo-button:hover {
+  background-color: var(--secondary-color) !important;
+  border: 1px solid var(--secondary-color) !important;
+  box-shadow: none !important;
+}
+
+.bingo-button:focus {
+  background-color: var(--red-color);
+  border: 1px solid var(--red-color);
+  box-shadow: none !important;
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .bingo-button {
+    font-size: 1rem;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .bingo-button {
+    font-size: 1.3rem;
+    padding: 1.8rem;
+  }
+}
