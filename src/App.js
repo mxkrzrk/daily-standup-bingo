@@ -10,9 +10,11 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Header from './components/Header/Header';
 import Col from 'react-bootstrap/Col';
+import BingoWon from './components/BingoWon/BingoWon';
 
 export default function App() {
   const [userTable, setUserTable] = useState();
+  const [won, setWon] = useState(false);
 
   // Set the random bingo table for the user
   useEffect(() => {
@@ -40,6 +42,7 @@ export default function App() {
       const victoryData = checkVictory(userTable);
       if (victoryData.win) {
         setUserTable(victoryData.winTable);
+        setWon(true);
       }
     }
   }, [userTable]);
@@ -57,12 +60,17 @@ export default function App() {
     }
   };
 
+  const handleClickWon = () => {
+    setWon(false);
+  };
+
   return (
     <Container fluid>
       <Row>
         <Header />
       </Row>
       <Row>
+        {won && <BingoWon onClickWon={handleClickWon} />}
         <Col
           as="main"
           xs={12}

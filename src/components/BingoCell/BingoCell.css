@@ -8,6 +8,7 @@
   vertical-align: middle !important;
   height: 4rem;
   width: 4rem;
+  cursor: pointer;
 }
 
 .bingo-cell-on {

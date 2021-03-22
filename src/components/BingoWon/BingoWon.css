@@ -1,0 +1,29 @@
+.bingo-won {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(50, 115, 115, 0.8);
+  z-index: 9999;
+  animation-name: won;
+  animation-duration: 1s;
+}
+
+.bingo-won-title {
+  color: var(--light-color);
+  font-size: 3rem;
+  word-break: break-all;
+  margin-bottom: 0;
+  padding: 4rem;
+  line-height: 4rem;
+}
+
+@keyframes won {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
