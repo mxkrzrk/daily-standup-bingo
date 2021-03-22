@@ -94,20 +94,7 @@ const checkLeftDiagonal = (winTable) => {
 
 export default function checkVictory(bingoTable) {
   // Create win table
-  const winTable = [];
-  const rowLength = bingoTable.length;
-  for (let row = 0; row < rowLength; row++) {
-    winTable.push([]);
-    const colLength = bingoTable[row].length;
-    for (let col = 0; col < colLength; col++) {
-      let cell = bingoTable[row][col];
-      if (cell.on) {
-        winTable[row].push({ ...cell, on: true });
-      } else {
-        winTable[row].push({ ...cell });
-      }
-    }
-  }
+  const winTable = bingoTable.slice();
   // Check victory type
   if (
     checkWinRow(winTable) ||
